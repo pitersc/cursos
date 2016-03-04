@@ -206,6 +206,7 @@ dpkg -i
 
 Crear fichero logstash.conf en /etc/logstash/conf.d/logstash.conf
 
+
 input {
   file {
     path => ["/var/log/suricata/eve.json"]
@@ -260,6 +261,7 @@ output {
     #protocol => http
   }
 }
+
 
 
 echo "127.0.0.1 elasticsearch" >> /etc/hosts
