@@ -162,9 +162,9 @@ cat eve.json | jq -r -c 'select(.event_type=="alert")|.payload'|base64 --decode
 cat eve.json | jq -c 'select(.event_type=="flow")|[.proto, .dest_port]'|sort |uniq -c|sort -nr|head -n10
 
 
-================
-VISOR WEB EVEBOX
-================
+===========
+VISORES WEB 
+===========
 
 Necesitamos instalar elasticsearch(2.0 o superior) y logstash previamente
 
