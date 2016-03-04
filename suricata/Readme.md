@@ -152,9 +152,13 @@ http://jasonish-suricata.readthedocs.org/en/latest/output/eve/eve-json-examplesj
 
 tail -f eve.json | jq -c '.'
 cat eve.json | jq -s '[.[]|.http.http_user_agent]|group_by(.)|map({key:.[0],value:(.|length)})|from_entries'
+
 tail -n500000 eve.json | jq -s 'map(select(.event_type=="netflow" and .dest_ip=="192.168.1.3").netflow.bytes)|add'|numfmt --to=iec
+
 tail -f eve.json | jq -c 'select(.event_type=="stats")|.stats.decoder'
+
 cat eve.json | jq -r -c 'select(.event_type=="alert")|.payload'|base64 --decode
+
 cat eve.json | jq -c 'select(.event_type=="flow")|[.proto, .dest_port]'|sort |uniq -c|sort -nr|head -n10
 
 
