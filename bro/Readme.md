@@ -82,13 +82,15 @@ https://github.com/timmolter/logstash-dfir/blob/master/conf_files
 Adaptar los archivos de configuración de logstash a nuestro entorno:
 ```
 sed -i -e 's/\/nsm\/bro\/logs\/current\//\/var\/log\/bro\//g' /etc/logstash/conf.d/bro*.conf  
-sed -i -e 's,host => localhost,hosts => "'${ELASTIC}'"\n index => "bro-%{+YYYY.MM.dd.HH}",g' /etc/logstash/conf.d/bro*.conf  
+sed -i -e 's,host => localhost,hosts => "'${IPELASTIC}'"\n index => "bro-%{+YYYY.MM.dd.HH}",g' /etc/logstash/conf.d/bro*.conf  
 sed -i -e '/date/i \ \ \ \ \de_dot{ }' /etc/logstash/conf.d/bro*.conf
 ```
 
 #####9 Comprobar configuracion de logstash:
 ```
 sudo -u logstash /opt/logstash/bin/logstash agent -f /etc/logstash/conf.d --configtest
+o
+/etc/init.d/logstash configtest
 ```
 
 #####10 Comprobar ejecución en consola:
