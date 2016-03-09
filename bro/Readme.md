@@ -43,12 +43,12 @@ export PATH=/opt/bro/bin:$PATH
 
 #####5 Configurar Bro
 
-Le decimos la tarjeta que vamos a monitorizar en /etc/bro/node.cfg
-Le decimos el rango de IP a monitorizar en /etc/bro/networks.cfg
+Le decimos la tarjeta que vamos a monitorizar en /etc/bro/node.cfg  
+Le decimos el rango de IP a monitorizar en /etc/bro/networks.cfg  
 Configuraos el mailing y el log en /etc/bro/broctl.cfg
 
 Esto no  hace falta ponerlo, lo puse para pruebas mias:
-echo "@load tuning/json-logs" >> /etc/bro/site/local.bro
+> echo "@load tuning/json-logs" >> /etc/bro/site/local.bro  
 echo "redef LogAscii::json_timestamps = JSON::TS_ISO8601;" >> /etc/bro/site/local.bro
 
 #####6 Instalar y arrancar bro
