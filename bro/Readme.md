@@ -23,6 +23,9 @@ Si existe en el repositorio actual, no hace falta poner esto:
 ```
 echo 'deb http://download.opensuse.org/repositories/network:/bro/Debian_8.0/ /' >> /etc/apt/sources.list.d/bro.list  
 wget -q0 - http://download.opensuse.org/repositories/network:bro/Debian_8.0/Release.key | apt-key add -  
+```
+Instalamos el paquete:
+```
 apt-get update  
 apt-get install bro broctl  
 ```
