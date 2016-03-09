@@ -52,7 +52,7 @@ Esto no  hace falta ponerlo, lo puse para pruebas mias:
 echo "@load tuning/json-logs" >> /etc/bro/site/local.bro
 echo "redef LogAscii::json_timestamps = JSON::TS_ISO8601;" >> /etc/bro/site/local.bro
 
-5.- Instalar y arrancar bro
+6.- Instalar y arrancar bro
 
 broctl
 install
@@ -64,14 +64,14 @@ Para ejecutarlo:
 broctl start
 
 
-5.- Instalar plugin necesarios en logstash:
+7.- Instalar plugin necesarios en logstash:
 
 cd /opt/logstash
 bin/plugin install logstash-filter-translate
 bin/plugin install logstash-filter-de_dot
 
 
-6.- Descargar archivos de configuración para logstash del bro:
+8.- Descargar archivos de configuración para logstash del bro:
 
 https://github.com/timmolter/logstash-dfir/blob/master/conf_files
 
@@ -82,12 +82,12 @@ sed -i -e 's,host => localhost,hosts => "'${ELASTIC}'"\n index => "bro-%{+YYYY.M
 sed -i -e '/date/i \ \ \ \ \de_dot{ }' /etc/logstash/conf.d/bro*.conf
 
 
-6.- Comprobar configuracion de logstash:
+9.- Comprobar configuracion de logstash:
 
 sudo -u logstash /opt/logstash/bin/logstash agent -f /etc/logstash/conf.d --configtest
 
 
-7.- Comprobar ejecución en consola:
+10.- Comprobar ejecución en consola:
 
 sudo -u logstash /opt/logstash/bin/logstash -f /etc/logstash/conf.d --debug
 
