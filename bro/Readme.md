@@ -7,6 +7,11 @@ Ref:
 * http://knowm.org/how-to-install-bro-network-security-monitor-on-ubuntu/
 * https://www.bro.org/sphinx/script-reference/index.html
 * http://try.bro.org/#/trybro?example=hello
+* http://doc.emergingthreats.net/bin/view/Main/EmergingBro
+* https://www.bro.org/bro-workshop-2011/index.html
+* http://ryesecurity.blogspot.com.ee/2012/04/solving-network-forensic-challenges.html
+* http://www.greatplains.net/
+* http://supbrosup.blogspot.com
 
 
 #####1 Instalar los paquetes que necesita:
