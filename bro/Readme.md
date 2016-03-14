@@ -63,6 +63,15 @@ exit
 ```
 Puedes añadir /usr/bin/broctl start a /etc/rc.local
 
+Para comprobar que la configuracion esta bien:
+```
+broctl diag
+```
+Para volver a cargar la configuracion
+```
+broctl deploy
+```
+
 Para ejecutarlo:
 ```
 broctl start  
