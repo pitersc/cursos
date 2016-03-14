@@ -97,3 +97,61 @@ o
 ```
 sudo -u logstash /opt/logstash/bin/logstash -f /etc/logstash/conf.d --debug
 ```
+#####11 Puertos
+
+Elasticsearch: 9200  
+Kibana: 5601  
+Grafana: 3000  
+Influxdb: 8083,8086  
+
+
+#####12 Manejo logs de bro
+
+https://www.bro.org/bro-workshop-2011/solutions/logs/index.html
+```
+cat conn.log | bro-cut id.orig_h id.orig_p id.resp_h duration
+
+awk '/^[^#]/ {print $3, $4, $5, $6, $9}' conn.log
+
+/opt/bro/bin/bro-cut host uri < http.log | awk '{ print $1$2 }'
+
+awk '$3 == "1.2.3.4" || $5 == "1.2.3.4"' conn.log
+```
+Ej1: List the connections by in increasing order of duration, i.e., the longest connections at the end.
+```
+awk 'NR > 4' < conn.log | sort -t$'\t' -k 9 -n
+```
+Ej2: Find all connections that are last longer than one minute.
+```
+awk 'NR > 4 && $9 > 60' conn.log
+```
+
+Ej3: Find all IP addresses of web servers that send more than more than 1 KB back to a client.
+```
+/opt/bro/bin/bro-cut service resp_bytes id.resp_h < conn.log | awk '$1 == "http" && $2 > 1000000 { print $3 }' | sort -u
+```
+
+Ej4: Are there any web servers on non-standard ports (i.e., 80 and 8080)?
+```
+/opt/bro/bin/bro-cut service id.resp_p id.resp_h < conn.log | awk '$1 == "http" && ! ($2 == 80 || $2 == 8080) { print $3 }' | sort -u
+```
+
+Ej5: Show a breakdown of the number of connections by service.
+```
+/opt/bro/bin/bro-cut service < conn.log | sort | uniq -c | sort -n
+```
+
+Ej6: Show the top 10 destination ports in descending order.
+```
+/opt/bro/bin/bro-cut id.resp_p < conn.log | sort | uniq -c | sort -rn | head -n 10
+```
+
+Ej7: What are the distinct browsers in this trace? What are the distinct MIME types of the downloaded URLS?
+```
+/opt/bro/bin/bro-cut user_agent < http.log | sort -u
+/opt/bro/bin/bro-cut mime_type < http.log | sort -u
+```
+
+#####13 Notice en bro
+
+https://www.bro.org/bro-workshop-2011/exercises/notices/index.html
