@@ -29,7 +29,9 @@ for filename in os.listdir(rulesDir):
 ```
 
 Podemos añadir en esta lista todas las que queramos:
+
 http://www.malwaredomainlist.com/hostslist/ip.txt
+
 https://zeustracker.abuse.ch/
 
 Juntar las listas:
@@ -46,6 +48,7 @@ sed -i "s|$|,1,100|g" reputation.list
 ```
 
 Si queremos hacer lo mismo con los chicos buenos:
+
 http://s3.amazonaws.com/alexa-static/top-1m.csv.zip
 
 
