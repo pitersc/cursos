@@ -47,4 +47,5 @@ sed -i "s|$|,1,100|g" reputation.list
 Si queremos hacer lo mismo con los chicos buenos:
 http://s3.amazonaws.com/alexa-static/top-1m.csv.zip
 
-
+Luego creamos el fichero iprep.rules:
+alert tcp any any -> any any (msg:"Test bad guys"; iprep:src,BadHosts,>,9; sid:1; rev:1;)
