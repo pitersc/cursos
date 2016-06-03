@@ -3,7 +3,6 @@ Aquí el script en python para sacar todas las ip's de los chicos malos que hay 
 Uso:
 script > /tmp/file.txt
 
-```
 #!/usr/bin/python
 #
 # Extract suspicious IP addresses from Snort rules files
@@ -26,29 +25,22 @@ for filename in os.listdir(rulesDir):
                 for ip in ips:
                         print ip
 
-```
+
 
 Podemos añadir en esta lista todas las que queramos:
-
 http://www.malwaredomainlist.com/hostslist/ip.txt
-
 https://zeustracker.abuse.ch/
 
 Juntar las listas:
-```
 cat lista1 lista2 lista3 > todo.txt
-```
+
 Luego el archivo generado, lo ordenamos y quitamos los duplicados:
-```
 cat todo.txt | sort | uniq > newfile.txt
-```
+
 Añadimos la categoria y el código:
-```
 sed -i "s|$|,1,100|g" reputation.list
-```
 
 Si queremos hacer lo mismo con los chicos buenos:
-
 http://s3.amazonaws.com/alexa-static/top-1m.csv.zip
 
 
