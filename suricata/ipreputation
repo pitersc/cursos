@@ -28,6 +28,5 @@ for filename in os.listdir(rulesDir):
 
 
 Luego el archivo generado, lo ordenamos y quitamos los duplicados:
-
 cat file.txt | sort | uniq > newfile.txt
 
