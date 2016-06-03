@@ -1,4 +1,4 @@
-Aquí el script en python para sacar todas las ip's de las rules:
+Aquí el script en python para sacar todas las ip's de los chicos malos que hay en las rules:
 
 Uso:
 script > /tmp/file.txt
@@ -27,6 +27,21 @@ for filename in os.listdir(rulesDir):
 
 
 
+Podemos añadir en esta lista todas las que queramos:
+http://www.malwaredomainlist.com/hostslist/ip.txt
+https://zeustracker.abuse.ch/
+
+Juntar las listas:
+cat lista1 lista2 lista3 > todo.txt
+
 Luego el archivo generado, lo ordenamos y quitamos los duplicados:
-cat file.txt | sort | uniq > newfile.txt
+cat todo.txt | sort | uniq > newfile.txt
+
+Añadimos la categoria y el código:
+sed -i "s|$|,1,100|g" reputation.list
+
+
+Si queremos hacer lo mismo con los chicos buenos:
+http://s3.amazonaws.com/alexa-static/top-1m.csv.zip
+
 
