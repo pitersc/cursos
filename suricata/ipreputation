@@ -1,3 +1,7 @@
+He creado un archivo de categories.txt muy simple:
+1,BadHosts,Know bad hosts
+2,GoodHosts,Know good hosts
+
 Aquí el script en python para sacar todas las ip's de los chicos malos que hay en las rules:
 
 Uso:
